@@ -7,7 +7,7 @@
 ### Performance (F-beta, Precision-recall curve) of selected methods on specific datasets
 | **Splatter simulation** | **MCA (T-cell) data** | **Pancreas (Alpha cell) data** |
 | --- | --- | --- |
-| <img src="data/splatter_dist.png" width="400"> | <img src="data/tcell_dist.png" width="400"> | <img src="data//pan_dist.png.png" width="400"> |
+| <img src="data/splatter_dist.png" width="400" height="270"> | <img src="data/tcell_dist.png" width="400"> | <img src="data/pan_dist.png" width="400"> |
 | <img src="data/splatter_80_gf_after.png" width="400"> | <img src="data/mca_gene_sparsity.png" width="400"> | <img src="data/pan_gene_sparsity.png" width="400"> |
 | <img src="data/splatter_80gf_fscore.png" width="400"> | <img src="data/mca_10pp_fscore.png" width="400"> | <img src="data/pan_98_10pp_fscore.png" width="400"> |
 | <img src="data/splatter_80gf_PR_curve.png" width="400"> | <img src="data/mca_10pp_PR_curve.png" width="400"> | <img src="data/pan_98_10pp_PR_curve.png" width="400"> |

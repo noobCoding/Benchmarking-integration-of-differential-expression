@@ -1,5 +1,7 @@
 # On using batch-effect-corrected data for differential expressionanalysis of single-cell RNA sequencing data
-
+#### Hai C. T. Nguyen†, Bukyung Baik†, Sora Yoon, Hae-Ock Lee, Taesung Park, Dougu Nam*
+*To whom correspondence should be addressed. Tel: +82-52-217-2525; Fax: +82-52-217-2639; Email: dougnam@unist.ac.kr
+|-------------------------------------------------------------------------------------------------------------------------|
 
 This analysis demonstrates the high resolution and efficacy of integrative DE analysis for specific cell type as compared to the analysis of bulk sequencing data. Overall, this project covers over 40 integrative methods for scRNA-seq DE analysis and several different levels of batch effects, thus provides a guideline to integrating DE analysis of scRNA-seq data. 
 

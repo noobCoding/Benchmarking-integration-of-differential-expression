@@ -1,4 +1,4 @@
-# On using batch-effect-corrected data for differential expressionanalysis of single-cell RNA sequencing data
+# Benchmarking integration of single-cell RNA-seq differential analysis
 #### Hai C. T. Nguyen†, Bukyung Baik†, Sora Yoon, Hae-Ock Lee, Taesung Park, Dougu Nam*
 -------------------------------------------------------------------------------------------------------------------------
 

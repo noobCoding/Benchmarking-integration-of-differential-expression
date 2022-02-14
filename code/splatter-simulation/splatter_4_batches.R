@@ -24,12 +24,10 @@ group_ratio <-  list(c(0.8, 0.2),
 
 simulate <- function(nGroups=2, nGenes=5000, dropout=0.5, seed = 17,
                      batchCells = c(300, 400, 400, 750), group.prob = c(0.3, 0.7),
-                     de.prob = c(0.2, 0.2),
+                     de.prob = c(0.1, 0.1),
                      de.downProb = c(1/3, 1/3),
-                     de.facLoc = 0.05,
-                     de.facScale = 0.2,
-                     #, lib.loc = 11, lib.scale = 0.2,
-                     # lib.loc = 11, lib.scale = c(0.2, 0.4),
+                     de.facLoc = 0.2,
+                     de.facScale = 0.2,                     
                      batch.facLoc=0.4,
                      batch.facScale=0.4
 ){

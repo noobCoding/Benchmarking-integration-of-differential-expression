@@ -13,7 +13,7 @@ panc8 <- panc8.SeuratData::panc8
 # split the object by dataset
 pancreas.list <- SplitObject(panc8, split.by = "tech")
 
-# selecting a specific cell type ('alpha' cells)
+# selecting a specific cell type ('beta' cells)
 indrop_cells <- c(which(pancreas.list$indrop@meta.data$celltype=='beta'))
 
 indrop_human1 <- c(which(pancreas.list$indrop$orig.ident == 'human1'))

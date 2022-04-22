@@ -313,37 +313,37 @@ b1c2 <- b1.markers$gene[b1.markers$cluster==2 ]
 b2c0 <- b2.markers$gene[b2.markers$cluster==0 ]
 b2c1 <- b2.markers$gene[b2.markers$cluster==1 ]
 
-length(intersect(b1c0, b2c0)) # 15
+length(intersect(b1c0, b2c0)) 
 ```
 
     ## [1] 17
 
 ``` r
-length(intersect(b1c0, b2c1)) # 74* ---> picked 
+length(intersect(b1c0, b2c1)) # ---> picked 
 ```
 
     ## [1] 77
 
 ``` r
-length(intersect(b1c1, b2c0)) # 2
+length(intersect(b1c1, b2c0)) 
 ```
 
     ## [1] 1
 
 ``` r
-length(intersect(b1c1, b2c1)) # 15
+length(intersect(b1c1, b2c1)) 
 ```
 
     ## [1] 14
 
 ``` r
-length(intersect(b1c2, b2c0)) # 20
+length(intersect(b1c2, b2c0)) 
 ```
 
     ## [1] 17
 
 ``` r
-length(intersect(b1c2, b2c1)) # 1
+length(intersect(b1c2, b2c1)) 
 ```
 
     ## [1] 3

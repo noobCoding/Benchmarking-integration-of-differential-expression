@@ -1,4 +1,4 @@
-Model free simulation with Pancreas data
+Model free simulation with Pancreas data beta cells
 ================
 
 ``` r
@@ -96,7 +96,7 @@ b1 <- SCTransform(b1)
 
     ## Calculating gene attributes
 
-    ## Wall clock passed: Time difference of 13.27542 secs
+    ## Wall clock passed: Time difference of 12.99315 secs
 
     ## Determine variable features
 
@@ -161,7 +161,7 @@ b2 <- SCTransform(b2)
 
     ## Calculating gene attributes
 
-    ## Wall clock passed: Time difference of 6.81971 secs
+    ## Wall clock passed: Time difference of 6.783844 secs
 
     ## Determine variable features
 
@@ -610,7 +610,7 @@ seu <- SCTransform(seu)
 
     ## Calculating gene attributes
 
-    ## Wall clock passed: Time difference of 8.865225 secs
+    ## Wall clock passed: Time difference of 8.110291 secs
 
     ## Determine variable features
 

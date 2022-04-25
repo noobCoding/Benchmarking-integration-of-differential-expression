@@ -1,4 +1,4 @@
-Model free simulation with Pancreas data
+Model-free simulation with Pancreas data
 ================
 
 ``` r

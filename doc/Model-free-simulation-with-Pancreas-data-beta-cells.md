@@ -1,14 +1,10 @@
-<<<<<<< HEAD
-Model free simulation with Pancreas data beta cells
+Model-free simulation with Pancreas data beta cells
 =======
 Model-free simulation with Pancreas data
->>>>>>> 7a5412bdf8957faa11e7086875a983ab986f54a0
 ================
 
 ``` r
-# BiocManager::install('devtools')
-# devtools::install_github('satijalab/seurat-data')
-# BiocManager::install('Seurat')
+rm(list=ls())
 library(SeuratData)
 ```
     ## -- Installed datasets ------------------------------------- SeuratData v0.2.1 --

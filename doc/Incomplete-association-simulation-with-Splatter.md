@@ -252,7 +252,7 @@ seu <- SCTransform(seu)
 
     ## Calculating gene attributes
 
-    ## Wall clock passed: Time difference of 10.29746 secs
+    ## Wall clock passed: Time difference of 10.12685 secs
 
     ## Determine variable features
 
@@ -266,36 +266,9 @@ seu <- SCTransform(seu)
 # PCA
 seu <- RunPCA(seu, npcs = 30, verbose = FALSE)
 # TSNE
-seu <- RunUMAP(seu, dims = 1:30, seed.use = 7968)
-```
+seu <- RunTSNE(seu, dims = 1:30, seed.use = 7968)
 
-    ## Warning: The default method for RunUMAP has changed from calling Python UMAP via reticulate to the R-native UWOT using the cosine metric
-    ## To use Python UMAP via reticulate, set umap.method to 'umap-learn' and metric to 'correlation'
-    ## This message will be shown once per session
-
-    ## 16:46:34 UMAP embedding parameters a = 0.9922 b = 1.112
-
-    ## 16:46:34 Read 1050 rows and found 30 numeric columns
-
-    ## 16:46:34 Using Annoy for neighbor search, n_neighbors = 30
-
-    ## 16:46:34 Building Annoy index with metric = cosine, n_trees = 50
-
-    ## 0%   10   20   30   40   50   60   70   80   90   100%
-
-    ## [----|----|----|----|----|----|----|----|----|----|
-
-    ## **************************************************|
-    ## 16:46:34 Writing NN index file to temp file C:\Users\Hai\AppData\Local\Temp\RtmpqAKBcX\file245424eb73b0
-    ## 16:46:34 Searching Annoy index using 1 thread, search_k = 3000
-    ## 16:46:35 Annoy recall = 100%
-    ## 16:46:35 Commencing smooth kNN distance calibration using 1 thread
-    ## 16:46:36 Initializing from normalized Laplacian + noise
-    ## 16:46:36 Commencing optimization for 500 epochs, with 32940 positive edges
-    ## 16:46:38 Optimization finished
-
-``` r
-DimPlot(seu, reduction = "umap",
+DimPlot(seu, reduction = "tsne",
         group.by = "Group", shape.by="Batch", pt.size = 2,label = F, repel = T)
 ```
 
@@ -319,24 +292,22 @@ tmp <- batch1[separated_DEG_1, tumor]
 for (g in rownames(tmp)){
   for (c in colnames(tmp)){
     prob = rbeta(1, a, b)
-    tmp[g, c] = rbinom(1, tmp[g, c], prob=prob)
+    tmp[g, c] = rbinom(1, tmp[g, c], prob=prob)%/%2
   }
 }
 tmp <- round(tmp)
 tmp -> batch1[separated_DEG_1, tumor]
 
 ############################# batch 2
-separated_DEG_2 = sample(non_DEG, N/2, replace=FALSE)
-some_1 <- sample(separated_DEG_1, N/2, replace=FALSE)
-separated_DEG_2 = c(separated_DEG_2, some_1)
-  
+non_DEG <- setdiff(non_DEG, separated_DEG_1)
+separated_DEG_2 = sample(non_DEG, N, replace=FALSE)
 tumor = which(cellinfo$Group[which(cellinfo$Batch=='Batch2')]=='Group2')
 
 tmp <- batch2[separated_DEG_2, tumor]
 for (g in rownames(tmp)){
   for (c in colnames(tmp)){
     prob = rbeta(1, a, b)
-    tmp[g, c] = rbinom(1, tmp[g, c], prob=prob)
+    tmp[g, c] = rbinom(1, tmp[g, c], prob=prob)%/%3
   }
 }
 tmp <- round(tmp)
@@ -364,7 +335,7 @@ seu <- SCTransform(seu)
 
     ##   |                                                                              |                                                                      |   0%  |                                                                              |==================                                                    |  25%  |                                                                              |===================================                                   |  50%  |                                                                              |====================================================                  |  75%  |                                                                              |======================================================================| 100%
 
-    ## Found 73 outliers - those will be ignored in fitting/regularization step
+    ## Found 71 outliers - those will be ignored in fitting/regularization step
 
     ## Second step: Get residuals using fitted parameters for 2402 genes
 
@@ -376,7 +347,7 @@ seu <- SCTransform(seu)
 
     ## Calculating gene attributes
 
-    ## Wall clock passed: Time difference of 9.586339 secs
+    ## Wall clock passed: Time difference of 9.720946 secs
 
     ## Determine variable features
 
@@ -390,32 +361,9 @@ seu <- SCTransform(seu)
 # PCA
 seu <- RunPCA(seu, npcs = 30, verbose = FALSE)
 # UMAP
-seu <- RunUMAP(seu, dims = 1:30, seed.use = 7968)
-```
+seu <- RunTSNE(seu, dims = 1:30, seed.use = 7968)
 
-    ## 16:47:15 UMAP embedding parameters a = 0.9922 b = 1.112
-
-    ## 16:47:15 Read 1050 rows and found 30 numeric columns
-
-    ## 16:47:15 Using Annoy for neighbor search, n_neighbors = 30
-
-    ## 16:47:15 Building Annoy index with metric = cosine, n_trees = 50
-
-    ## 0%   10   20   30   40   50   60   70   80   90   100%
-
-    ## [----|----|----|----|----|----|----|----|----|----|
-
-    ## **************************************************|
-    ## 16:47:15 Writing NN index file to temp file C:\Users\Hai\AppData\Local\Temp\RtmpqAKBcX\file245424397ecb
-    ## 16:47:15 Searching Annoy index using 1 thread, search_k = 3000
-    ## 16:47:15 Annoy recall = 100%
-    ## 16:47:15 Commencing smooth kNN distance calibration using 1 thread
-    ## 16:47:16 Initializing from normalized Laplacian + noise
-    ## 16:47:16 Commencing optimization for 500 epochs, with 32970 positive edges
-    ## 16:47:19 Optimization finished
-
-``` r
-DimPlot(seu, reduction = "umap",
+DimPlot(seu, reduction = "tsne",
         group.by = "Group", shape.by="Batch", pt.size = 2,label = F, repel = TRUE)
 ```
 

@@ -1,5 +1,3 @@
-Model-free simulation with Pancreas data beta cells
-=======
 Model-free simulation with Pancreas data
 ================
 

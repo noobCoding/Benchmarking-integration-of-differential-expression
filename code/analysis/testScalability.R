@@ -1,6 +1,3 @@
-readRDS(file = "dfTime.rds")
-readRDS(file = "dfTimeMeta.rds")
-
 for (st in c("nCell", "nGene", "Size", "sqrtSize")) {
   N <- as.numeric(unlist(dfmeta[st]))
   pN <- c()

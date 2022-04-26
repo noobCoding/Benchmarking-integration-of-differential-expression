@@ -292,7 +292,7 @@ tmp <- batch1[separated_DEG_1, tumor]
 for (g in rownames(tmp)){
   for (c in colnames(tmp)){
     prob = rbeta(1, a, b)
-    tmp[g, c] = rbinom(1, tmp[g, c], prob=prob)%/%2
+    tmp[g, c] = rbinom(1, tmp[g, c], prob=prob)
   }
 }
 tmp <- round(tmp)
@@ -307,7 +307,7 @@ tmp <- batch2[separated_DEG_2, tumor]
 for (g in rownames(tmp)){
   for (c in colnames(tmp)){
     prob = rbeta(1, a, b)
-    tmp[g, c] = rbinom(1, tmp[g, c], prob=prob)%/%3
+    tmp[g, c] = rbinom(1, tmp[g, c], prob=prob)
   }
 }
 tmp <- round(tmp)

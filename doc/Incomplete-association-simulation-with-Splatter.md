@@ -1,12 +1,6 @@
 Incomplete association simulation with Splatter
 ================
 
-``` r
-rm(list=ls())
-
-library(splatter)
-```
-
     ## Loading required package: SingleCellExperiment
 
     ## Loading required package: SummarizedExperiment
@@ -101,10 +95,6 @@ library(splatter)
     ## 
     ##     anyMissing, rowMedians
 
-``` r
-library(Seurat)
-```
-
     ## Registered S3 method overwritten by 'spatstat.geom':
     ##   method     from
     ##   print.boxx cli
@@ -117,21 +107,6 @@ library(Seurat)
     ## The following object is masked from 'package:SummarizedExperiment':
     ## 
     ##     Assays
-
-``` r
-sparsity_level = .95
-
-sim <- splatSimulate(group.prob=c(0.6, 0.4), nGenes=5000, batchCells=c(300, 750),
-                     dropout.type='experiment', method= 'groups' ,seed=17, dropout.shape=-1, 
-                     dropout.mid=3.9, 
-                     de.prob = c(0.05, 0.05),
-                     de.downProb = c(0.4, 0.4),
-                     de.facLoc = 0.05,
-                     de.facScale = 0.05,
-                     batch.facLoc=0.01,
-                     batch.facScale=0.01
-                    )
-```
 
     ## Getting parameters...
 
@@ -175,18 +150,7 @@ sim <- splatSimulate(group.prob=c(0.6, 0.4), nGenes=5000, batchCells=c(300, 750)
 
     ## Done!
 
-``` r
-tmpcount = counts(sim)
-colsum = colSums(tmpcount == 0)
-simsparsity = sum(colsum)/(5000*(300 + 750))
-print("raw sparsity")
-```
-
     ## [1] "raw sparsity"
-
-``` r
-print(simsparsity)
-```
 
     ## [1] 0.8957535
 
@@ -252,7 +216,7 @@ seu <- SCTransform(seu)
 
     ## Calculating gene attributes
 
-    ## Wall clock passed: Time difference of 10.12685 secs
+    ## Wall clock passed: Time difference of 10.07501 secs
 
     ## Determine variable features
 
@@ -272,7 +236,7 @@ DimPlot(seu, reduction = "tsne",
         group.by = "Group", shape.by="Batch", pt.size = 2,label = F, repel = T)
 ```
 
-![](Incomplete-association-simulation-with-Splatter_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
+![](Incomplete-association-simulation-with-Splatter_files/figure-gfm/unnamed-chunk-2-1.png)<!-- -->
 
 ``` r
 #Incomplete association manipulation
@@ -292,7 +256,7 @@ tmp <- batch1[separated_DEG_1, tumor]
 for (g in rownames(tmp)){
   for (c in colnames(tmp)){
     prob = rbeta(1, a, b)
-    tmp[g, c] = rbinom(1, tmp[g, c], prob=prob)%/%2
+    tmp[g, c] = rbinom(1, tmp[g, c], prob=prob)%/%3
   }
 }
 tmp <- round(tmp)
@@ -335,7 +299,7 @@ seu <- SCTransform(seu)
 
     ##   |                                                                              |                                                                      |   0%  |                                                                              |==================                                                    |  25%  |                                                                              |===================================                                   |  50%  |                                                                              |====================================================                  |  75%  |                                                                              |======================================================================| 100%
 
-    ## Found 71 outliers - those will be ignored in fitting/regularization step
+    ## Found 76 outliers - those will be ignored in fitting/regularization step
 
     ## Second step: Get residuals using fitted parameters for 2402 genes
 
@@ -347,7 +311,7 @@ seu <- SCTransform(seu)
 
     ## Calculating gene attributes
 
-    ## Wall clock passed: Time difference of 9.720946 secs
+    ## Wall clock passed: Time difference of 10.00811 secs
 
     ## Determine variable features
 
@@ -367,4 +331,4 @@ DimPlot(seu, reduction = "tsne",
         group.by = "Group", shape.by="Batch", pt.size = 2,label = F, repel = TRUE)
 ```
 
-![](Incomplete-association-simulation-with-Splatter_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
+![](Incomplete-association-simulation-with-Splatter_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->

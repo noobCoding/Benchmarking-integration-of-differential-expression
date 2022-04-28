@@ -6,7 +6,7 @@
 <img src="data/summary_220407.png" width="1350"> 
 
 
-## [->> Model free simulation tutorial <<-](https://github.com/noobCoding/Benchmarking-integration-of-scRNAseq-differential-analysis/blob/main/doc/Model-free-simulation-with-Pancreas-data-beta-cells.md)
+## [->> Our wiki pages <<-](hhttps://github.com/noobCoding/Benchmarking-integration-of-scRNAseq-differential-analysis/wiki/Wiki-pages)
 
 
 ### Performance of selected methods on specific datasets

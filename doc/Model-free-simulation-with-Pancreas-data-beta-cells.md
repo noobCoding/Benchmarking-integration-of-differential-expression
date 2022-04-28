@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-Model free simulation with Pancreas data beta cells
-=======
 Model-free simulation with Pancreas data
->>>>>>> 7a5412bdf8957faa11e7086875a983ab986f54a0
 ================
 
 ``` r

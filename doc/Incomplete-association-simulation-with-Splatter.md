@@ -265,7 +265,7 @@ seu <- SCTransform(seu)
 ``` r
 # PCA
 seu <- RunPCA(seu, npcs = 30, verbose = FALSE)
-# TSNE
+# UMAP
 seu <- RunUMAP(seu, dims = 1:30, seed.use = 7968)
 ```
 

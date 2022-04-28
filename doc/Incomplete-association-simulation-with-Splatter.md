@@ -1,7 +1,6 @@
 Incomplete association simulation with Splatter
 ================
 
-<<<<<<< HEAD
 ``` r
 rm(list=ls())
 

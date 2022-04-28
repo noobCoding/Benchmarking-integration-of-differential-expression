@@ -98,9 +98,8 @@ tmp <- round(tmp)
 tmp -> batch1[separated_DEG_1, tumor]
 
 ############################# batch 2
+non_DEG <- setdiff(non_DEG, separated_DEG_1)
 separated_DEG_2 = sample(non_DEG, N/2, replace=FALSE)
-some_1 <- sample(separated_DEG_1, N/2, replace=FALSE)
-separated_DEG_2 = c(separated_DEG_2, some_1)
   
 tumor = which(cellinfo$Group[which(cellinfo$Batch=='Batch2')]=='Group2')
 

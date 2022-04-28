@@ -133,8 +133,6 @@ sim <- splatSimulate(group.prob=c(0.6, 0.4), nGenes=5000, batchCells=c(300, 750)
                     )
 ```
 
-=======
->>>>>>> 2937b72269f4ce68da4e1ecbb9f5c0f8977487c6
     ## Getting parameters...
 
     ## Creating simulation object...
@@ -254,7 +252,7 @@ seu <- SCTransform(seu)
 
     ## Calculating gene attributes
 
-    ## Wall clock passed: Time difference of 10.51683 secs
+    ## Wall clock passed: Time difference of 10.0122 secs
 
     ## Determine variable features
 
@@ -275,26 +273,26 @@ seu <- RunUMAP(seu, dims = 1:30, seed.use = 7968)
     ## To use Python UMAP via reticulate, set umap.method to 'umap-learn' and metric to 'correlation'
     ## This message will be shown once per session
 
-    ## 09:20:12 UMAP embedding parameters a = 0.9922 b = 1.112
+    ## 09:38:14 UMAP embedding parameters a = 0.9922 b = 1.112
 
-    ## 09:20:12 Read 1050 rows and found 30 numeric columns
+    ## 09:38:14 Read 1050 rows and found 30 numeric columns
 
-    ## 09:20:12 Using Annoy for neighbor search, n_neighbors = 30
+    ## 09:38:14 Using Annoy for neighbor search, n_neighbors = 30
 
-    ## 09:20:12 Building Annoy index with metric = cosine, n_trees = 50
+    ## 09:38:14 Building Annoy index with metric = cosine, n_trees = 50
 
     ## 0%   10   20   30   40   50   60   70   80   90   100%
 
     ## [----|----|----|----|----|----|----|----|----|----|
 
     ## **************************************************|
-    ## 09:20:12 Writing NN index file to temp file C:\Users\Hai\AppData\Local\Temp\RtmpATEtQ6\file394065b11dcf
-    ## 09:20:12 Searching Annoy index using 1 thread, search_k = 3000
-    ## 09:20:12 Annoy recall = 100%
-    ## 09:20:13 Commencing smooth kNN distance calibration using 1 thread
-    ## 09:20:13 Initializing from normalized Laplacian + noise
-    ## 09:20:13 Commencing optimization for 500 epochs, with 32940 positive edges
-    ## 09:20:16 Optimization finished
+    ## 09:38:14 Writing NN index file to temp file C:\Users\Hai\AppData\Local\Temp\RtmpOkNfSB\file24686db3ad0
+    ## 09:38:14 Searching Annoy index using 1 thread, search_k = 3000
+    ## 09:38:14 Annoy recall = 100%
+    ## 09:38:14 Commencing smooth kNN distance calibration using 1 thread
+    ## 09:38:15 Initializing from normalized Laplacian + noise
+    ## 09:38:15 Commencing optimization for 500 epochs, with 32940 positive edges
+    ## 09:38:18 Optimization finished
 
 ``` r
 DimPlot(seu, reduction = "umap",
@@ -328,9 +326,8 @@ tmp <- round(tmp)
 tmp -> batch1[separated_DEG_1, tumor]
 
 ############################# batch 2
+non_DEG <- setdiff(non_DEG, separated_DEG_1)
 separated_DEG_2 = sample(non_DEG, N/2, replace=FALSE)
-some_1 <- sample(separated_DEG_1, N/2, replace=FALSE)
-separated_DEG_2 = c(separated_DEG_2, some_1)
   
 tumor = which(cellinfo$Group[which(cellinfo$Batch=='Batch2')]=='Group2')
 
@@ -366,7 +363,7 @@ seu <- SCTransform(seu)
 
     ##   |                                                                              |                                                                      |   0%  |                                                                              |==================                                                    |  25%  |                                                                              |===================================                                   |  50%  |                                                                              |====================================================                  |  75%  |                                                                              |======================================================================| 100%
 
-    ## Found 83 outliers - those will be ignored in fitting/regularization step
+    ## Found 87 outliers - those will be ignored in fitting/regularization step
 
     ## Second step: Get residuals using fitted parameters for 2402 genes
 
@@ -378,7 +375,7 @@ seu <- SCTransform(seu)
 
     ## Calculating gene attributes
 
-    ## Wall clock passed: Time difference of 9.790773 secs
+    ## Wall clock passed: Time difference of 9.682364 secs
 
     ## Determine variable features
 
@@ -395,26 +392,26 @@ seu <- RunPCA(seu, npcs = 30, verbose = FALSE)
 seu <- RunUMAP(seu, dims = 1:30, seed.use = 7968)
 ```
 
-    ## 09:20:57 UMAP embedding parameters a = 0.9922 b = 1.112
+    ## 09:38:46 UMAP embedding parameters a = 0.9922 b = 1.112
 
-    ## 09:20:57 Read 1050 rows and found 30 numeric columns
+    ## 09:38:46 Read 1050 rows and found 30 numeric columns
 
-    ## 09:20:57 Using Annoy for neighbor search, n_neighbors = 30
+    ## 09:38:46 Using Annoy for neighbor search, n_neighbors = 30
 
-    ## 09:20:57 Building Annoy index with metric = cosine, n_trees = 50
+    ## 09:38:46 Building Annoy index with metric = cosine, n_trees = 50
 
     ## 0%   10   20   30   40   50   60   70   80   90   100%
 
     ## [----|----|----|----|----|----|----|----|----|----|
 
     ## **************************************************|
-    ## 09:20:57 Writing NN index file to temp file C:\Users\Hai\AppData\Local\Temp\RtmpATEtQ6\file394025a7773e
-    ## 09:20:57 Searching Annoy index using 1 thread, search_k = 3000
-    ## 09:20:57 Annoy recall = 100%
-    ## 09:20:57 Commencing smooth kNN distance calibration using 1 thread
-    ## 09:20:58 Initializing from normalized Laplacian + noise
-    ## 09:20:58 Commencing optimization for 500 epochs, with 33818 positive edges
-    ## 09:21:01 Optimization finished
+    ## 09:38:46 Writing NN index file to temp file C:\Users\Hai\AppData\Local\Temp\RtmpOkNfSB\file246876015cc
+    ## 09:38:46 Searching Annoy index using 1 thread, search_k = 3000
+    ## 09:38:46 Annoy recall = 100%
+    ## 09:38:46 Commencing smooth kNN distance calibration using 1 thread
+    ## 09:38:47 Initializing from normalized Laplacian + noise
+    ## 09:38:47 Commencing optimization for 500 epochs, with 33812 positive edges
+    ## 09:38:50 Optimization finished
 
 ``` r
 DimPlot(seu, reduction = "umap",

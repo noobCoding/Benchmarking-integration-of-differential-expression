@@ -1,6 +1,7 @@
 Incomplete association simulation with Splatter
 ================
 
+<<<<<<< HEAD
 ``` r
 rm(list=ls())
 
@@ -133,6 +134,8 @@ sim <- splatSimulate(group.prob=c(0.6, 0.4), nGenes=5000, batchCells=c(300, 750)
                     )
 ```
 
+=======
+>>>>>>> 2937b72269f4ce68da4e1ecbb9f5c0f8977487c6
     ## Getting parameters...
 
     ## Creating simulation object...

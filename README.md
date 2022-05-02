@@ -6,7 +6,7 @@
 <img src="data/summary_220407.png" width="1350"> 
 
 
-## [->> Our wiki pages <<-](https://github.com/noobCoding/Benchmarking-integration-of-scRNAseq-differential-analysis/wiki/Wiki-pages)
+## [->> Our wiki <<-](https://github.com/noobCoding/Benchmarking-integration-of-scRNAseq-differential-analysis/wiki/Wiki-pages)
 
 
 ### Performance of selected methods on specific datasets

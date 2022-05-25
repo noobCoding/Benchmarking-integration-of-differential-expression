@@ -14,7 +14,7 @@
 |(A) <img src="data/2b_splatter_tsne.png" width="400"> |(B) <img src="data/tcell_tsne.png" width="400"> |(C) <img src="data/pan_tsne.png" width="400"> |
 |(D) <img src="data/splatter_80375_pvca.png" width="400"> |(E) <img src="data/tcell_pvca.png" width="400"> |(F) <img src="data/pan_alpha_pvca.png" width="400"> |
 |(G) <img src="data/sp80_fbeta.png" width="400"> |(H) <img src="data/tcell_fbeta.png" width="400"> |(I) <img src="data/pan_fbeta.png" width="400"> |
-|(J) <img src="data/sp80_PR.png" width="400"> |(K) <img src="data/tcell_PR.png" width="400"> |(L) <img src="data/pan_PR.png" width="400"> |
+|(J) <img src="data/2b_pr.png" width="400"> |(K) <img src="data/tcell_pr.png" width="400"> |(L) <img src="data/pan_pr.png" width="400"> |
 
 *To whom correspondence should be addressed. Tel: +82-52-217-2525; Fax: +82-52-217-2639; Email: dougnam@unist.ac.kr
 |-------------------------------------------------------------------------------------------------------------------------|

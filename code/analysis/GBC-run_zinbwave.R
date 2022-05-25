@@ -42,7 +42,7 @@ for(base_name in base_names){
   sce <- SingleCellExperiment(assay=list(counts=as.matrix(count_df)), colData=cellinfo)
   rowData(sce)$feature_symbol <- rownames(sce)
   
-  sce_zinb_norm <- zinbwave(sce, K=2, epsilon=1000, normalizedValues=TRUE, residuals = TRUE)
+  sce_zinb_norm <- zinbwave(sce, K=2, X='~Batch', epsilon=1000, normalizedValues=TRUE, residuals = TRUE)
   W <- reducedDim(sce_zinb_norm)
   
   write.table(W, file=paste0('demo_zinbwave/', x2, '/all/', "W_zinbwave_corrected.txt"))

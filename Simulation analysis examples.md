@@ -1,4 +1,4 @@
-## Benchmarking integration of single-cell RNA-seq differential analysis
+## Benchmarking integration of single-cell differential expression
 -------------------------------------------------------------------------------------------------------------------------
 [->> Model-free simulation with Pancreas data](https://github.com/noobCoding/Benchmarking-integration-of-scRNAseq-differential-analysis/blob/main/doc/Model-free-simulation-with-Pancreas-data-beta-cells.md)
 <br>

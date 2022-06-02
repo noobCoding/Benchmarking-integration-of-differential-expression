@@ -1,4 +1,4 @@
-# Benchmarking integration of single-cell RNA-seq differential analysis
+# Benchmarking integration of single-cell differential expression
 -------------------------------------------------------------------------------------------------------------------------
 
 ### General performance of methods

@@ -16,5 +16,5 @@
 |(G) <img src="data/2b_fbeta.png" width="400"> |(H) <img src="data/tcell_fbeta.png" width="400"> |(I) <img src="data/pan_fbeta.png" width="400"> |
 |(J) <img src="data/2b_pr.png" width="400"> |(K) <img src="data/tcell_pr.png" width="400"> |(L) <img src="data/pan_pr.png" width="400"> |
 
-*To whom correspondence should be addressed. Tel: +82-52-217-2525; Fax: +82-52-217-2639; Email: dougnam@unist.ac.kr
+<!--*To whom correspondence should be addressed. Tel: +82-52-217-2525; Fax: +82-52-217-2639; Email: dougnam@unist.ac.kr -->
 |-------------------------------------------------------------------------------------------------------------------------|

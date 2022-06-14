@@ -16,5 +16,25 @@
 |(G) <img src="data/2b_fbeta.png" width="400"> |(H) <img src="data/tcell_fbeta.png" width="400"> |(I) <img src="data/pan_fbeta.png" width="400"> |
 |(J) <img src="data/2b_pr.png" width="400"> |(K) <img src="data/tcell_pr.png" width="400"> |(L) <img src="data/pan_pr.png" width="400"> |
 
-<!--*To whom correspondence should be addressed. Tel: +82-52-217-2525; Fax: +82-52-217-2639; Email: dougnam@unist.ac.kr -->
+### System requirements
+* All experiments were tested with the following softwares and packages:
+
+- R (ver. 4.1.2)
+- Splatter (ver. 1.18.2)
+- sva (ver. 3.38.0)
+- batchelor (ver. 1.6.3)
+- scMerge (ver. 1.6.0)
+- limma (ver. 3.46.0)
+- Seurat (ver. 4.0.2)
+- Seurat Data (ver. 3.0.2) 
+- MAST (ver. 1.16.0)
+- DESeq2 (ver. 1.30.1)
+- edgeR (ver. 3.32.1)
+- ZINB-WaVE (ver. 1.12.0) 
+- ... (dependencies)
+
+* Installation time: maximum 2 hours (if all packages are missing)
+ 
+* Time for testing 2-batch simulation data: about 1.5 hours
+
 |-------------------------------------------------------------------------------------------------------------------------|

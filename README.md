@@ -19,7 +19,7 @@
 ### System requirements
 * All experiments were tested with the following softwares and packages:
 
-- R (4.1.2)
+- R (>=4.1.2)
 - Splatter (1.18.2)
 - sva (3.38.0)
 - batchelor (1.6.3)

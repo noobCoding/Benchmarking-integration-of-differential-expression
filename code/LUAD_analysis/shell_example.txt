@@ -1,0 +1,3 @@
+./run_first_step.sh first none Epithelial_cells none
+./run_second_step.sh second none Epithelial_cells none
+./run_third_step.sh third none Epithelial_cells none

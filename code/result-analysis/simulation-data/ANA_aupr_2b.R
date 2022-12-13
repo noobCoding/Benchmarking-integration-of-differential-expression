@@ -6,9 +6,7 @@ rm(list=ls())
 library(gridExtra)
 library(openxlsx)
 dir.create('Venn_diagram_PR_allgenes')
-
 p_threshold <- c(0, 10^-4, 0.001, 0.005, 0.01, 0.05, 0.05001, 0.1, 0.2, 0.3, 0.5, 0.7, 1, 1.1)
-# p_threshold <- c(0, 10^-4, 0.001, 0.005, 0.01, 0.05, 0.05001)
 
 vect_method <-c(
   "Combat_Wilcox",
@@ -165,13 +163,7 @@ main_Fscore <- function(select){
           compliment_df <- data.frame(genes=missingGenes, pval=mp)
           S4 <- rbind(new_df, compliment_df)
           colnames(S4) <- c('genes', 'pval')
-          
-          # if (method %in% c("DESeq2_wFisher","edgeR_wFisher", "LogNorm+limmatrend_wFisher", "voom+modt_wFisher")){
-          #   S3 <- S3[S3$sqrt.sample_weights.wFisher <= cutoff,]
-          # } else {
-          #   S3 <- S3[S3$adj.pval <= cutoff,]
-          # }
-          
+
           S4 <- S4[S4$pval < cutoff,]
           
           norm <- S4$genes
@@ -227,6 +219,7 @@ Score_down$all <- data.frame(method = rownames(Score_down$all), Score_down$all)
 
 Fall <- rbind(Score_up$all, Score_down$all)
 
+## Assign new names 
 vect_method[vect_method=="Pseudo_ZW_DESeq2_Cov"] <- "ZW_DESeq2_Cov"
 tmp <- rownames(Fall)
 tmp[grepl('Pseudo_ZW_DESeq2_Cov', tmp)] <- gsub("Pseudo_ZW_DESeq2_Cov", "ZW_DESeq2_Cov", tmp[grepl('Pseudo_ZW_DESeq2_Cov', tmp)])
@@ -291,8 +284,8 @@ up_all_005 <- data.frame(matrix(ncol = 4, nrow = 0))
 tmp_up_all <- data.frame(matrix(ncol = 4, nrow = 0))
 
 for (mtd in vect_method){
-  # mtd <- "edgeR_wFisher"
   # mtd <- "Pseudobulk_limmatrend"
+  
   tmp <- Fall[Fall$method==mtd,]
   ppv <- tpr <- c()
   for (cutoff in p_threshold){
@@ -305,6 +298,7 @@ for (mtd in vect_method){
     tpr <- c(tpr, ttpr)
   }
   
+  # smoothing abnormal cutoffs
   if (mtd=="Pseudobulk_DESeq2"){
     pv <- c(ppv[1], ppv[5:7])
     pr <- c(tpr[1], tpr[5:7])
@@ -353,21 +347,10 @@ tmp_up_all$Recall<-as.numeric(tmp_up_all$Recall)
 
 # ################################################ 
 for (mtd in vect_method){
-  
   dtList <- tmp_up_all[tmp_up_all$method==mtd,]
   prec <- dtList$Precision
   reca <- dtList$Recall
   cuto <- dtList$cutoff
-  
-  # if ((prec[6] - prec[7]) < 0.01 ){
-  #   precision <- c(prec[4:5], prec[7:8])
-  #   recall <- c(reca[4:5], reca[7:8])
-  #   cutoff <- c(cuto[4:5], cuto[7:8])
-  #   ispl <- spline(cutoff, recall, xout = c(0.05), method = 'natural')
-  #   dtList$Recall[6] <- 0.5*(ispl$y + 0.5*(reca[5] + reca[7]))
-  #   ispl2 <- spline(recall, precision, xout = c(dtList$Recall[6]), method = 'natural')
-  #   dtList$Precision[6] <- ispl2$y
-  # }
   
   up_all <- rbind(up_all, dtList)
 }
@@ -416,17 +399,16 @@ up_all$Precision<-as.numeric(up_all$Precision)
 up_all$Recall<-as.numeric(up_all$Recall)
 
 up_all_005 <- up_all[up_all$cutoff==0.05, ]
-# up_all <- up_all[up_all$cutoff != 0.05, ]
 
 y <- seq(.975, 0., len=length(vect_method))
 # y <- seq(.625, 0., len=length(vect_method))
+
 sy <- y
 sy[order(aupr_up_all$score, decreasing = T)] <- y
 aupr_up_all <- data.frame(y=sy, aupr_up_all)
 
 ###  highlight cutoff = 0.05 - F-score
 up_all$method <- factor(up_all$method, levels=unique(up_all$method))
-
 
 # 
 briterhex <- function(colors) {
@@ -492,8 +474,9 @@ for (mtd in vect_method){
 }
 graphString <- paste0(graphString, '+geom_point(data=up_all_005, aes(x=Recall, y=Precision,color=method), shape=1, size=4)')
 eval(parse(text=graphString))
+
 pdf("sp80_LBE_pr.pdf", width=10, height=10)
 eval(parse(text=graphString))
 dev.off()
 
-0saveRDS(aupr_up_all, file = 'sp80_LBE_pr_score.RDS')
+saveRDS(aupr_up_all, file = 'sp80_LBE_pr_score.RDS')

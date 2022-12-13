@@ -63,9 +63,6 @@ vect_method <-c(
   "LogNorm+limmatrend_wFisher"
 )
 
-# vect_method <- names(result.list)
-# vect_method <- vect_method[1:(length(vect_method) - 1)]  # remove GeneInfo
-
 main_Fscore <- function(select){
 # SIMULATIONS
   vect_simu <- gsub('data/','',list.dirs('data', recursive=FALSE))
@@ -147,14 +144,7 @@ main_Fscore <- function(select){
         }
         
         N <- result.list$GeneInfo$All
-        
-        # if (method %in% c("DESeq2_wFisher","edgeR_wFisher", "LogNorm+limmatrend_wFisher", "voom+modt_wFisher")){
-        #   S3 <- S3[S3$sqrt.sample_weights.wFisher <= cutoff,]
-        # } else if (method %in% c("voom+modt_Fisher")){
-        #   S3 <- S3[S3$Fisher <= cutoff,]
-        # } else {
-          S3 <- S3[S3$adj.pval <= cutoff,]
-        # }
+        S3 <- S3[S3$adj.pval <= cutoff,]
         
         norm <- rownames(S3)
         GT <- S7
@@ -167,7 +157,8 @@ main_Fscore <- function(select){
         
         # recall (sensitivity)
         TPR <- round(TP/(TP + FN),3)
-        
+        # specificity/ true negative rate
+        TNR <- round(TN/(TN + FP), 3)
         # precision (positive predictive value)
         PPV <- round(TP/(TP + FP),3)
         
@@ -179,7 +170,9 @@ main_Fscore <- function(select){
         Fscore <- round(Fscore,3)
         
         # table matrix confusion 
-        data <- data.frame(TP=TP,FN=FN,FP=FP,recall=TPR,precision=PPV,Fscore=Fscore, row.names = method)
+        data <- data.frame(TP=TP,FN=FN,FP=FP,precision=PPV,
+                           recall=TPR, specificity=TNR,
+                           Fscore=Fscore, row.names = method)
         data[is.na(data)]=0
         return(data)
       })
@@ -189,7 +182,6 @@ main_Fscore <- function(select){
       
       mef <- rbind(rep('',dim(mef)[2]),mef)
       rownames(mef)[rownames(mef)==""] <- simu
-      # print (mef)
       return(list(mef,df['Fscore',]))
       
     })
@@ -216,7 +208,6 @@ Fscore_up <- main_Fscore(select='UP') # comment write.table(df_all_all)
 Fscore_down <- main_Fscore(select='DOWN') # comment write.table(df_all_all)
 
 Fall <- rbind(Fscore_up$all, Fscore_down$all)
-# F_all <- reshape2::melt(list(Fscore_up$all,Fscore_down$all), value.name = "F.score")
 F_all <- reshape2::melt(list(Fall), value.name = "F.score")
 F_all <- F_all[, -1]
 
@@ -334,7 +325,6 @@ Var2_col['Raw_Wilcox'] = 'black'
 p4 <- ggplot(F_all, aes(x=Var2, y=F.score, color=Var2)) + scale_color_manual(values = Var2_col)+
   geom_boxplot(outlier.size = 1) + coord_flip() +
   geom_hline(data=df, aes(yintercept=median),linetype="dashed", color='black') + 
-  # labs(y = 'F-score') + theme(axis.text.y = element_text(size=14, color = a))
   labs(y = 'F-score (beta=0.5)') + theme(axis.text.y = element_text(size=16, color = a))
 
 p4 <- p4 + theme(axis.line = element_line(color = "black", size = 0.5, linetype = "solid"),
@@ -351,8 +341,6 @@ p4 <- p4 + theme(axis.line = element_line(color = "black", size = 0.5, linetype 
                  panel.spacing.y = unit(1, "lines"),
                  strip.text = element_text(size=17, color="black"),
                  strip.background.x = element_rect(fill="#CDE8DF"),
-                 # strip.background.x = element_blank(),
-                 # strip.background.y = element_blank(),
                  legend.position="none") 
 
 

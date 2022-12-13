@@ -64,15 +64,12 @@ for (dt in dtname){
   bps <- round(bps, 2)
   
   all_olp[[dt]] <- bps
-  # alop[[dt]] <- as.numeric(bps[c('olp'),])
   alop <- rbind(alop, bps[c('olp'),])
   
 }
 
 top_error <- c()
 for (i in 1:46){
-  # min <- min(alop[, i])
-  # avg <- (sum(alop[, i]) - min)/5
   top_error <- c(top_error, mean(alop[,i]))
 }
 names(top_error) <- colnames(alop)

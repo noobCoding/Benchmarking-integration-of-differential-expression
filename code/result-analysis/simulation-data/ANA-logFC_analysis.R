@@ -37,11 +37,6 @@ for (simu in vect_simu){
   group1 <- rownames(cellinfo[cellinfo$Group=="Group1",])
   group2 <- rownames(cellinfo[cellinfo$Group=="Group2",])
 
-  # batch1 <- rownames(cellinfo[cellinfo$Batch=="1",])
-  # batch2 <- rownames(cellinfo[cellinfo$Batch=="2",])
-  # group1 <- rownames(cellinfo[cellinfo$Group=="A",])
-  # group2 <- rownames(cellinfo[cellinfo$Group=="B",])
-
   #batch1 2
   cog_1 <- counts[, group1]
   cog_2 <- counts[, group2]

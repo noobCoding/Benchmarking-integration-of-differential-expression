@@ -82,39 +82,6 @@ for (simu in vect_simu){
   group1 <- rownames(cellinfo[cellinfo$Group=="Group1",])
   group2 <- rownames(cellinfo[cellinfo$Group=="Group2",])
   
-  # batch1 <- rownames(cellinfo[cellinfo$Batch=="1",])
-  # batch2 <- rownames(cellinfo[cellinfo$Batch=="2",])
-  #
-  # group1 <- rownames(cellinfo[cellinfo$Group=="A",])
-  # group2 <- rownames(cellinfo[cellinfo$Group=="B",])
-  
-  #batch1 2
-  # cog_1 <- counts[, group1]
-  # cog_2 <- counts[, group2]
-  # 
-  # lib_1 <- colSums(cog_1)
-  # lib_2 <- colSums(cog_2)
-  # 
-  # genes1 <- c()
-  # for (g in DEG$x){
-  #   tg_1 <- cog_1[rownames(cog_1)==g, ]
-  #   tg_1 <- tg_1/lib_1
-  #   tg_1 <- tg_1[tg_1 != 0]
-  #   tg_1 <- log2(1 +  tg_1 * 10^4)
-  #   g1 <- sum(tg_1)/length(tg_1)
-  #   
-  #   tg_2 <- cog_2[rownames(cog_2)==g, ]
-  #   tg_2 <- tg_2/lib_2
-  #   tg_2 <- tg_2[tg_2 != 0]
-  #   tg_2 <- log2(1 +  tg_2 * 10^4)
-  #   g2 <- sum(tg_2)/length(tg_2)
-  #   
-  #   genes1 <- c(genes1, g1 - g2)
-  # }
-  # names(genes1) <- DEG$x
-  # logFC_raw <- genes1
-  
-  # simu = 'simul5_dropout_37'
   result.list<-readRDS(paste0("data/sp80.", simu, '_full.RData'))
   
   hist_005 <- c()

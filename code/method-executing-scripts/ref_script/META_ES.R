@@ -12,16 +12,16 @@ run_ES<-function(processed,cellinfo,former.meth=''){
   y$group<-factor(cellinfo[colnames(x),'Group'])
   return(y)})
   
-  res<-ind.cal.ES.fix(first_processed_pseudo, vs=processed$group%>%unique()%>%sort(decreasing = T))
+  res<-ind.cal.ES.core(first_processed_pseudo, vs=processed$group%>%unique()%>%sort(decreasing = T))
   colnames(res$ES)=colnames(res$Var)=names(processed2)
   
   save(res, cellinfo, file=paste0('./',ifelse(former.meth=='','',paste0(former.meth,'_sep','+')),'es_sep.rda'))
 }
 
 #ind.cal.ES, cal.ES, get.ES functions from MetaDE(version 1.0.5) are modified for this analysis
-ind.cal.ES.fix<-function(x, vs){
+ind.cal.ES.core<-function(x, vs){
   K <- length(x)
-  res <- get.ES.fix(x, vs)
+  res <- get.ES.core(x, vs)
   if (is.null(names(x))) {
     colnames(res$ES) <- colnames(res$Var) <- paste("dataset", 
                                                    1:K, sep = "")
@@ -31,13 +31,13 @@ ind.cal.ES.fix<-function(x, vs){
   result <- list(ES = res$ES, Var = res$Var)
   return(result)  
 }
-get.ES.fix<-function(x, vs){
+get.ES.core<-function(x, vs){
   K <- length(x)
   ES.m <- Var.m <- N <- n <- NULL
   for (k in 1:K) {
     y <- x[[k]][[1]]
     l <- x[[k]][[2]]
-    temp <- cal.ES.fix(y, l, vs=vs)
+    temp <- cal.ES.core(y, l, vs=vs)
     ES.m <- cbind(ES.m, temp[, "dprime"])
     Var.m <- cbind(Var.m, temp[, "vardprime"])
     N <- c(N, length(l))
@@ -52,7 +52,7 @@ get.ES.fix<-function(x, vs){
 }
 
 
-cal.ES.fix<-function (y, l, vs){
+cal.ES.core<-function (y, l, vs){
   library(gmp)
   l <- unclass(factor(l))
   n <- table(factor(l))

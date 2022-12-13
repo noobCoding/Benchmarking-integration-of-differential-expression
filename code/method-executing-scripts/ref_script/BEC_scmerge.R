@@ -1,4 +1,4 @@
-scSEGIndex_used<-function (exprs_mat, cell_type = NULL, BPPARAM = BiocParallel::SerialParam(progressbar = TRUE), 
+scSEGIndex90<-function (exprs_mat, cell_type = NULL, BPPARAM = BiocParallel::SerialParam(progressbar = TRUE), 
                          return_all = FALSE){
   library(BiocParallel)
   library(scMerge)
@@ -119,7 +119,7 @@ run_scMerge<-function(count,cellinfo,former.meth=''){
   
   sce <- SingleCellExperiment(assays = list(counts = count),colData = cellinfo)
   sce <- logNormCounts(sce)
-  result = scSEGIndex_used(exprs_mat = count)
+  result = scSEGIndex90(exprs_mat = count)
   seg <- rownames(count)[which(result$segIdx < .5)]
   scMerge_res <- scMerge(
     sce_combine = sce, 

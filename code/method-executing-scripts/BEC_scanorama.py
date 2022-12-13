@@ -19,18 +19,7 @@ import time
 if __name__ == '__main__':
     
     allpath = [ 
-    #"../GBC/lowdepth/low_avg_10_LBE/data/"
-    #,"../GBC/lowdepth/low_avg_10_SBE/data/"
-    #"../GBC/lowdepth/avg_4_SBE/data/"
-    #"../GBC/lowdepth/avg_4_LBE/data/"
-    
-    "Covid19"
-    #"SCLung"   
-    #"FPTest/Covid19"
-    #"FPTest/SCLung"   
-    
-    #"../GBC/7batch/7b_sbe/data"
-    #"../GBC/7batch/7b_lbe/data"
+      #data"
     ]
     
     for path in allpath:    
@@ -46,14 +35,14 @@ if __name__ == '__main__':
             print (mt_file)
 
             # loading data
-            #sdata = ad.read_csv(ds_file, delimiter='\t', first_column_names=True) # for simulations delimiter = '\t'        
-            sdata = ad.read_csv(ds_file, delimiter=' ', first_column_names=True)  # for Covid19 # for LUAD data delim=" " 
+            sdata = ad.read_csv(ds_file, delimiter='\t', first_column_names=True) # for simulations delimiter = '\t'        
+            #sdata = ad.read_csv(ds_file, delimiter=' ', first_column_names=True)  # for Covid19 # for LUAD data delim=" " 
 
             sdata = sdata.T                
             sdata.layers['counts'] = sdata.X
 
-            #pd_obs = pd.read_csv(mt_file, delimiter="\t", header=0, index_col=0)
-            pd_obs = pd.read_csv(mt_file, delimiter=" ", header=0, index_col=0) # for Covid19, LUAD data delim=" "
+            pd_obs = pd.read_csv(mt_file, delimiter="\t", header=0, index_col=0)
+            #pd_obs = pd.read_csv(mt_file, delimiter=" ", header=0, index_col=0) # for Covid19, LUAD data delim=" "
 
             binfo = pd_obs['Batch']
             binfo = list(map(str, binfo))

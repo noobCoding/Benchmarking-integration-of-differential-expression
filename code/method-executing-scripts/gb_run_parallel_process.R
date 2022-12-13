@@ -1,8 +1,3 @@
-# library(remotes)
-# remove.packages(grep("spatstat", installed.packages(), value = T))
-# .rs.restartR()
-# devtools::install_version("spatstat", version = "1.64-1")
-# remotes::install_version('Seurat', version = '3.2')
 library('rstudioapi')
 
 jobRunScript("GBC-run_limma.R")

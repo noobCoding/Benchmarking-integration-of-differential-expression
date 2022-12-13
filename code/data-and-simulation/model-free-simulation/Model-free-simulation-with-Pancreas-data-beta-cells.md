@@ -1,5 +1,4 @@
-Model-free simulation with Pancreas data
-================================================================================================================
+# Model-free simulation with Pancreas data
 
 ``` r
 # BiocManager::install('devtools')
@@ -7,6 +6,7 @@ Model-free simulation with Pancreas data
 # BiocManager::install('Seurat')
 library(SeuratData)
 ```
+
     ## -- Installed datasets ------------------------------------- SeuratData v0.2.1 --
     ## v panc8 3.0.2
     ## -------------------------------------- Key -------------------------------------

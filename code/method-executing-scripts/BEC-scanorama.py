@@ -69,6 +69,7 @@ if __name__ == '__main__':
             # scanorama                
             scano_data = sdata.copy()
 
+            # luad data
             #"P0018" "P0008" "P0006" "P0020" "P0030" "P0034" "P0019"
             #batch_1 = scano_data[scano_data.obs['Batch'] == 'P0018']
             #batch_2 = scano_data[scano_data.obs['Batch'] == 'P0008']
@@ -91,7 +92,7 @@ if __name__ == '__main__':
             #batch_1 = scano_data[scano_data.obs['Batch'] == '1']
             #batch_2 = scano_data[scano_data.obs['Batch'] == '2']                
 
-            # codvid 19            
+            # codvid-19            
             #batch_1 = scano_data[scano_data.obs['Batch'] == 'F']
             #batch_2 = scano_data[scano_data.obs['Batch'] == 'M']
 

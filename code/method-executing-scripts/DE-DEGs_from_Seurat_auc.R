@@ -1,6 +1,6 @@
 rm(list=ls())
 library('Seurat') 
-source('GBC-Seurat_DEG_analysis_auc.R')
+source('DE-Seurat_DEG_analysis_auc.R')
 
 ######## S3 batch12 after normalization 
 

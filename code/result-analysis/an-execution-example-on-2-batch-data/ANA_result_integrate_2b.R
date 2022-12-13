@@ -74,39 +74,6 @@ for (simu in vect_simu){
   GeneInfo$Up <- up_genes$x
   GeneInfo$Down <- down_genes$x
   
-  # Top 50% Most/Least Sparse DEGs
-  de_counts <- counts[de_genes$x,]
-
-  rowsum = rowSums(de_counts==0)/length(colnames(de_counts))
-  high_sparse <- rowsum[ rowsum >= quantile(rowsum, probs=0.50, na.rm=T) ]
-  low_sparse <- rowsum[ rowsum < quantile(rowsum, probs=0.50, na.rm=T) ]
-
-  GeneInfo$High_sparse_Up <- up_genes$x[up_genes$x %in% names(high_sparse)]
-  GeneInfo$High_sparse_Down <- down_genes$x[down_genes$x %in% names(high_sparse)]
-  GeneInfo$High_sparse_genes <- high_sparse
-
-  GeneInfo$Low_sparse_Up <- up_genes$x[up_genes$x %in% names(low_sparse)]
-  GeneInfo$Low_sparse_Down <- down_genes$x[down_genes$x %in% names(low_sparse)]
-  GeneInfo$Low_sparse_genes <- low_sparse
-
-  # ## Top 50% lowest expressed DEGs
-  expression = rowMeans(de_counts)
-
-  # max_exp <- sapply(de_genes$x, function(g) {max(de_counts[g, ])})
-  # names(max_exp) <- rownames(de_counts)
-  # expression <- (expression + max_exp/length(colnames(de_counts)))
-
-  high_express <- expression[ expression >= quantile(expression, probs=0.50, na.rm=T) ]
-  low_express <- expression[ expression < quantile(expression, probs=0.50, na.rm=T) ]
-
-  GeneInfo$Low_express_Up <- up_genes$x[up_genes$x %in% names(low_express)]
-  GeneInfo$Low_express_Down <- down_genes$x[down_genes$x %in% names(low_express)]
-  GeneInfo$Low_express_genes <- low_express
-
-  GeneInfo$High_express_Up <- up_genes$x[up_genes$x %in% names(high_express)]
-  GeneInfo$High_express_Down <- down_genes$x[down_genes$x %in% names(high_express)]
-  GeneInfo$High_express_genes <- high_express
-  
   result.list$GeneInfo <- GeneInfo
   saveRDS(result.list, paste0("data/sp80.", simu, '_full.RData'))
 }

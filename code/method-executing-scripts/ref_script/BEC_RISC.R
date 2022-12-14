@@ -100,7 +100,7 @@ n_eigen<-function (object = NULL, var.gene = NULL, Colors = NULL, nPC = 20,
     PC3.use<-PC3%>%dplyr::filter(PC2<c(0.9,0.95,0.98)[min(which(sapply(c(0.9,0.95,0.98),FUN=function(x){return(PC3%>%dplyr::filter(PC2<x)%>%dplyr::select(Num)%>%max())})>=5))])
   }
   #Use the number of PC below std.cut as eigenvector to use.
-  return(PC3.1$Num%>%max())
+  return(PC3.use$Num%>%max())
 }
 process0 <- function(obj0,large=F){
   # Filter cells and genes
@@ -145,7 +145,6 @@ run_RISC<-function(count,cellinfo,P_ref.ind=NULL){
     intersect, lapply(data0.origin,FUN=function(x){x@rowdata$Symbol})
   )
   data0 = data0.origin
-  dim(mat0)
   #"Std.cut" can be 0.85~0.9 for small size datasets (like total cells < 10,000)
   # and be 0.90~0.98 for large size datasets (total cells > 10,000).
   if(ncol(mat0)<10000){
@@ -157,9 +156,10 @@ run_RISC<-function(count,cellinfo,P_ref.ind=NULL){
   }
   if(is.null(P_ref.ind)){
     #Select the reference dataset from InPlot function.
+    pdf('InPlot_output_RISC.pdf')
     InPlot(data0, var.gene = var0, Std.cut = Std.cut, ncore = 4, minPC = 16, nPC = 40)
     dev.off()
-    break()
+    return(NULL)
   }
   #If reference dataset is already set as input, we can do the further integration
   #Select the number of eigen_vector for further integration

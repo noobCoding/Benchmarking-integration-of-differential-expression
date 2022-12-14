@@ -12,7 +12,7 @@ run_QP<-function(processed,cellinfo,former.meth='risc'){
   cell.ctrl = rownames(obj0@coldata)[obj0@coldata$Group == sort(unique(obj0@coldata$Group))[1]]
   cell.sam = rownames(obj0@coldata)[obj0@coldata$Group == sort(unique(obj0@coldata$Group))[2]]
   res = scDEG(obj0, cell.ctrl = cell.ctrl, cell.sam = cell.sam, ncore=1, Padj=1, frac=0, logFC=0,
-               min.cells = 0, method = meth)
+               min.cells = 0, method = 'QP')
   
   
   res_name<-paste0(ifelse(former.meth=='','',paste0(former.meth,'+')),'QP')

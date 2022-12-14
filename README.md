@@ -33,8 +33,22 @@
 - ZINB-WaVE (1.12.0) 
 - ... (dependencies)
 
-* Installation time: maximum 2 hours (if all packages are missing)
- 
-* Time for testing 2-batch simulation data: about 1.5 hours
 
-|-------------------------------------------------------------------------------------------------------------------------|
+* Requirement libraries used for testing Python code are listed in the 'requirements.txt' including:
+
+- anndata==0.8.0
+- helpers==0.2.0
+- matplotlib==3.5.3
+- numpy==1.23.1
+- pandas==1.4.4
+- scanorama==1.7.2
+- scanpy==1.9.1
+- scgen==2.1.0
+- scipy==1.9.1
+- scvi==0.6.8
+- seaborn==0.12.1
+
+torch==1.12.1
+
+
+

@@ -36,7 +36,7 @@ All experiments were tested with the following softwares and packages:
 
 
 
-All requirement libraries used for testing Python code are listed in the above **'requirements.txt'** including:
+All requirement libraries used for testing Python (version >= 3.8) code are listed in the above **'requirements.txt'** including:
 - anndata==0.8.0
 - helpers==0.2.0
 - matplotlib==3.5.3

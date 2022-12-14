@@ -2,7 +2,7 @@
 -------------------------------------------------------------------------------------------------------------------------
 
 ### General performance of methods
-* This analysis demonstrates the high resolution and efficacy of integrative DE analysis for specific cell type as compared to the analysis of bulk sequencing data. Overall, this project covers over 40 integrative methods for scRNA-seq DE analysis and several different levels of batch effects, thus provides a guideline to integrating DE analysis of scRNA-seq data. 
+* This analysis demonstrates the high resolution and efficacy of integrative DE analysis for specific cell type as compared to the analysis of bulk sequencing data. Overall, this project covers over 46 integrative methods for scRNA-seq DE analysis and several different levels of batch effects, thus provides a guideline to integrating DE analysis of scRNA-seq data. 
 <img src="data/sum_features.png" width="1350"> 
 <br>
 
@@ -34,7 +34,7 @@
 - ... (dependencies)
 
 
-* Requirement libraries used for testing Python code are listed in the 'requirements.txt' including:
+* All requirement libraries used for testing Python code are listed in the 'requirements.txt' including:
 
 - anndata==0.8.0
 - helpers==0.2.0
@@ -47,8 +47,4 @@
 - scipy==1.9.1
 - scvi==0.6.8
 - seaborn==0.12.1
-
-torch==1.12.1
-
-
-
+- torch==1.12.1

@@ -3,7 +3,7 @@
 
 ### General performance of methods
 * This analysis demonstrates the high resolution and efficacy of integrative DE analysis for specific cell type as compared to the analysis of bulk sequencing data. Overall, this project covers over 46 integrative methods for scRNA-seq DE analysis and several different levels of batch effects, thus provides a guideline to integrating DE analysis of scRNA-seq data. 
-<img src="data/sum_features.png" width="1350"> 
+<img src="data/summary-performance.png" width="1350"> 
 <br>
 
 ### Performance of selected methods on specific datasets
@@ -13,8 +13,8 @@
 | --- | --- | --- |
 |(A) <img src="data/2b_splatter_tsne.png" width="400"> |(B) <img src="data/tcell_tsne.png" width="400"> |(C) <img src="data/pan_tsne.png" width="400"> |
 |(D) <img src="data/splatter_80375_pvca.png" width="400"> |(E) <img src="data/tcell_pvca.png" width="400"> |(F) <img src="data/pan_alpha_pvca.png" width="400"> |
-|(G) <img src="data/2b_fbeta.png" width="400"> |(H) <img src="data/tcell_fbeta.png" width="400"> |(I) <img src="data/pan_fbeta.png" width="400"> |
-|(J) <img src="data/2b_pr.png" width="400"> |(K) <img src="data/tcell_pr.png" width="400"> |(L) <img src="data/pan_pr.png" width="400"> |
+|(G) <img src="data/sp80_LBE_fbeta.png" width="400"> |(H) <img src="data/tcell_fbeta.png" width="400"> |(I) <img src="data/pan_fbeta.png" width="400"> |
+|(J) <img src="data/sp80_LBE_pr.png" width="400"> |(K) <img src="data/tcell_pr.png" width="400"> |(L) <img src="data/pan_pr.png" width="400"> |
 
 
 ## System requirements

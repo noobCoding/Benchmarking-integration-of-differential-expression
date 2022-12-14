@@ -17,8 +17,8 @@
 |(J) <img src="data/2b_pr.png" width="400"> |(K) <img src="data/tcell_pr.png" width="400"> |(L) <img src="data/pan_pr.png" width="400"> |
 
 ### System requirements
-* All experiments were tested with the following softwares and packages:
 
+All experiments were tested with the following softwares and packages:
 - R (>=4.1.2)
 - Splatter (1.18.2)
 - sva (3.38.0)
@@ -34,8 +34,7 @@
 - ... (dependencies)
 
 
-* All requirement libraries used for testing Python code are listed in the 'requirements.txt' including:
-
+All requirement libraries used for testing Python code are listed in the 'requirements.txt' including:
 - anndata==0.8.0
 - helpers==0.2.0
 - matplotlib==3.5.3

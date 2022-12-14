@@ -17,7 +17,7 @@
 |(J) <img src="data/2b_pr.png" width="400"> |(K) <img src="data/tcell_pr.png" width="400"> |(L) <img src="data/pan_pr.png" width="400"> |
 
 
-### System requirements
+## System requirements
 
 All experiments were tested with the following softwares and packages:
 - R (>=4.1.2)

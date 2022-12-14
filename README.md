@@ -2,7 +2,7 @@
 -------------------------------------------------------------------------------------------------------------------------
 
 ### General performance of methods
-* This analysis demonstrates the high resolution and efficacy of integrative DE analysis for specific cell type as compared to the analysis of bulk sequencing data. Overall, this project covers over 40 integrative methods for scRNA-seq DE analysis and several different levels of batch effects, thus provides a guideline to integrating DE analysis of scRNA-seq data. 
+* This analysis demonstrates the high resolution and efficacy of integrative DE analysis for specific cell type as compared to the analysis of bulk sequencing data. Overall, this project covers over 46 integrative methods for scRNA-seq DE analysis and several different levels of batch effects, thus provides a guideline to integrating DE analysis of scRNA-seq data. 
 <img src="data/sum_features.png" width="1350"> 
 <br>
 
@@ -16,9 +16,10 @@
 |(G) <img src="data/2b_fbeta.png" width="400"> |(H) <img src="data/tcell_fbeta.png" width="400"> |(I) <img src="data/pan_fbeta.png" width="400"> |
 |(J) <img src="data/2b_pr.png" width="400"> |(K) <img src="data/tcell_pr.png" width="400"> |(L) <img src="data/pan_pr.png" width="400"> |
 
-### System requirements
-* All experiments were tested with the following softwares and packages:
 
+## System requirements
+
+All experiments were tested with the following softwares and packages:
 - R (>=4.1.2)
 - Splatter (1.18.2)
 - sva (3.38.0)
@@ -33,8 +34,18 @@
 - ZINB-WaVE (1.12.0) 
 - ... (dependencies)
 
-* Installation time: maximum 2 hours (if all packages are missing)
- 
-* Time for testing 2-batch simulation data: about 1.5 hours
 
-|-------------------------------------------------------------------------------------------------------------------------|
+
+All requirement libraries used for testing Python (version >= 3.8) code are listed in the above **'requirements.txt'** including:
+- anndata==0.8.0
+- helpers==0.2.0
+- matplotlib==3.5.3
+- numpy==1.23.1
+- pandas==1.4.4
+- scanorama==1.7.2
+- scanpy==1.9.1
+- scgen==2.1.0
+- scipy==1.9.1
+- scvi==0.6.8
+- seaborn==0.12.1
+- torch==1.12.1

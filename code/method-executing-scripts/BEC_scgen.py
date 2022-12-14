@@ -19,7 +19,7 @@ import time
 if __name__ == '__main__':
     
     allpath = [ 
-      #data"
+      "data"
     ]
     
     for path in allpath:    

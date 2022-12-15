@@ -1,0 +1,4 @@
+"X.LogNormalize." "X.LogNormalize..1" "X.none." "X.none..1" "X.1.53."
+"1" "LogNormalize" "LogNormalize" "none" "none" "1.53"
+"2" "raw" "raw" "none" "none" "0.0169999999999999"
+"3" "zinbwave" "zinbwave" "none" "none" "180.598"

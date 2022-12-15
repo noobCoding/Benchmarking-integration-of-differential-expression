@@ -70,7 +70,7 @@ for (simu in vect_simu){
       if (method %in% c('scvi',  'scgen','scanorama')){
         corrected_data <- read.csv(file = paste0('data/',simu, '/', method , '_corrected_data.csv'),header=T,row.names=1,check.names = F)
         if (method=='scanorama'){
-          corrected_data <- corrected_data * 10
+          corrected_data <- corrected_data
         }
       } else if (method == 'risc') {
         load(paste0('data/',simu,'/first_processed/', 'splatter.0.05mincell_filtered_RISC_first_processed.RData'))
@@ -82,7 +82,7 @@ for (simu in vect_simu){
         
       } else if (method == 'mnn_opt') {
         load(paste0('data/',simu,'/first_processed/', 'splatter.0.05mincell_filtered_', method,'_first_processed.RData'))
-        corrected_data <- first_processed$count* 20
+        corrected_data <- first_processed$count
         
       } else {
         load(paste0('data/',simu,'/first_processed/', 'splatter.0.05mincell_filtered_', method,'_first_processed.RData'))

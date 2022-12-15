@@ -6,12 +6,12 @@ sapply(files.sources, source)
 # example-1a on processing a BEC method
 run_combat(count,cellinfo)
 load('combat.rda')
-run_wilcox(processed = T,cellinfo=cellinfo,is.log=T,former.meth = 'combat')
+run_wilcox(processed, cellinfo=cellinfo,is.log=T,former.meth = 'combat')
 load('combat+wilcox.rda')
 
 # example-1b on processing a BEC method using Python including 'scvi', 'scgen', 'scanorama'
 run_format_python(cellinfo, meth='scvi')
-run_wilcox(processed = T,cellinfo=cellinfo,is.log=T,former.meth = 'scvi')
+run_wilcox(processed, cellinfo=cellinfo,is.log=T,former.meth = 'scvi')
 load('scvi+wilcox.rda')
 
 #example-2 on processing a COV method 

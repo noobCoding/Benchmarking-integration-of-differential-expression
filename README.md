@@ -3,6 +3,7 @@
 
 ### General performance of methods
 * This analysis demonstrates the high resolution and efficacy of integrative DE analysis for specific cell type as compared to the analysis of bulk sequencing data. Overall, this project covers over 46 integrative methods for scRNA-seq DE analysis and several different levels of batch effects, thus provides a guideline to integrating DE analysis of scRNA-seq data. 
+<img src="data/time-gene-analysis.png" width="1350"> 
 <img src="data/summary-performance.png" width="1350"> 
 <br>
 

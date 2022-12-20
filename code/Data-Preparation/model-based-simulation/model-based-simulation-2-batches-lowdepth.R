@@ -32,7 +32,7 @@ simulate <- function(id=0, nGroups=2, nGenes=5000,seed = 17,  dropout.mid=0.5,
                        de.prob=de.prob, de.downProb=de.downProb,
                        de.facLoc=de.facLoc, de.facScale=de.facScale,
                        batch.facLoc=batch.facLoc, batch.facScale=batch.facScale,
-                       lib.loc=8.2,  lib.scale = 0.5   # avg. 4
+                       lib.loc=8.2,  lib.scale = 0.5
                        
   )
   tmpcount = counts(sim)

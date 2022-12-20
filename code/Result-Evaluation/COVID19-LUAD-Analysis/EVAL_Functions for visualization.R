@@ -2,7 +2,7 @@ draw_plot<-function(result.list=result.list,methods_to_plot=methods_to_plot,ref=
                     sort.meth=sort.meth,fdr_cut=fdr_cut,plot_topn_genes=c(0.2)){
   library(pracma)
   meth.tot<-unique(unlist(methods_to_plot))
-  plot_df<-data.frame(x=numeric(),y=numeric(),meth.comb=character())
+  plot_df<-data.frame(x=numeric(),y=numeric(),methods=character())
 
   default.order=c('base_line','TCGA_DESeq2','TCGA_edgeR','TCGA_limmavoom','TCGA_limmatrend','GSE43458.limma_Cov','GSE10072.limma_Cov','GSE31210.limma_Cov','Pseudobulk_DESeq2','Pseudobulk_edgeR','Pseudobulk_limmavoom','Pseudobulk_limmatrend','Combat_Wilcox','limma_BEC_Wilcox','MNN_Wilcox','scMerge_Wilcox','Seurat_Wilcox','ZW_BEC_Wilcox','Raw_Wilcox','RISC_Wilcox' , "Scanorama_Wilcox", "scGen_Wilcox", "scVI_Wilcox",'MAST','MAST_Cov','DESeq2','DESeq2_Cov','ZW_DESeq2','ZW_DESeq2_Cov','DESeq2_wFisher','edgeR_DetRate','edgeR_DetRate_Cov','edgeR','edgeR_Cov','ZW_edgeR','ZW_edgeR_Cov','edgeR_wFisher','limmavoom','limmavoom_Cov','limmatrend','limmatrend_Cov','Combat_limmatrend','MNN_limmatrend','scMerge_limmatrend','LogN+limmatrend_wFisher','RISC_limmatrend',"Scanorama_limmatrend", "scGen_limmatrend", "scVI_limmatrend",'DESeq2_FEM','LogN_FEM','DESeq2_REM','LogN_REM','RISC_QP')
   
@@ -24,7 +24,7 @@ draw_plot<-function(result.list=result.list,methods_to_plot=methods_to_plot,ref=
     plot_df%<>%rbind(temp_plots)
   }
   ed_x<-length(result.list$gene)
-  ed_y<-ref_weight[ref_genes %in% intersect(res_list$gene,ref_genes)]%>%sum()
+  ed_y<-ref_weight[ref_genes %in% intersect(result.list$gene,ref_genes)]%>%sum()
   plot_df%<>%rbind(data.frame(x=c(0,ed_x),y=c(0,ed_y),methods=rep(paste0(ed_y, '/', ed_x),2)))
   
   
@@ -43,9 +43,10 @@ draw_plot<-function(result.list=result.list,methods_to_plot=methods_to_plot,ref=
   # col_meths.use<-unique(plot_df$methods)[!str_detect(unique(plot_df$methods),pattern='[_]ind[.]analysis[_]')]
   ind.analysis<-unique(plot_df$methods)[str_detect(unique(plot_df$methods),pattern = '[_]ind[.]analysis[_]')]
   col_meths.use<-setdiff(unique(plot_df$methods),ind.analysis)
-  col_meths.use<-setdiff(col_meths.use,col_meths.use[str_detect(col_meths.use,pattern='[/]')])
   plot_col_sub<-c(rep('grey',length(ind.analysis)),"black")
   names(plot_col_sub)=c(ind.analysis, col_meths.use[str_detect(col_meths.use,pattern='[/]')])
+  # col_meths.use<-setdiff(col_meths.use,col_meths.use[str_detect(col_meths.use,pattern='[/]')])
+  
 
   plot_col=c(plot_col,plot_col_sub)
   plot_df%<>%dplyr::filter(methods%in%names(plot_col))
@@ -54,9 +55,9 @@ draw_plot<-function(result.list=result.list,methods_to_plot=methods_to_plot,ref=
   plot_size=rep(1.8,length(plot_col))
   names(plot_lty)=names(plot_size)=names(plot_col)
   plot_lty[col_meths.use[str_detect(col_meths.use,pattern='[/]')]]='longdash'
-  plot_size[ind_patients]=0.9
+  plot_size[ind.analysis]=0.9
   plot_size[col_meths.use[str_detect(col_meths.use,pattern='[/]')]]=1.5
-  
+  # print(names(plot_col))
   if(any(str_detect(names(plot_col),pattern='[_]ind[.]analysis[_]'))){
     library(colortools)
     plot_col[['GSE43458.limma_Cov']]=plot_col[['GSE31210.limma_Cov']]=plot_col[['TCGA_limmatrend']]="green"
@@ -84,7 +85,7 @@ draw_plot<-function(result.list=result.list,methods_to_plot=methods_to_plot,ref=
     plot_col[str_detect(names(plot_col),pattern='_REM')]='#CD9600'
     plot_col[str_detect(names(plot_col),pattern='_FEM')]='#00AEFA'
     plot_col[str_detect(names(plot_col),pattern='_wFisher')]='#FEBD1A'
-  }else if(any(str_detect(pattern='Main_figure',string=names(meth.comb.use)))){
+  }else if(any(str_detect(pattern='Main_figure',string=names(methods_to_plot)))){
     library(colortools)
     plot_col[['GSE43458.limma_Cov']]=plot_col[['GSE31210.limma_Cov']]=plot_col[['TCGA_limmatrend']]="green"
     plot_col[['TCGA_limmavoom']]=sequential(plot_col[['TCGA_limmatrend']])[[15]]

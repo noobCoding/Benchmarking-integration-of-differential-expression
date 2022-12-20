@@ -1,15 +1,17 @@
 analysis_script_dir='~/'
-source(paste0(analysis_script_dir,'KS_truncated.R'))
+standard_positive_dir='~/'
+standard_positive_dir='/hdd2/SC lung/standard_positive/'
+source(paste0(analysis_script_dir,'truncated kolmogorov-smirnov.R'))
 library(dplyr)
 library(tidyverse)
 library(magrittr)
-meth.comb.list<-get.methcomblist()
 
 for(fdr_cut in c(0.01,0.05,'none')){
   {
     `%ni%`<-Negate(`%in%`)
     ###ks params###
     topn_ks=0.2 #top 20% truncated ks test
+    analyze_with='TCGA'
   }
   for(ref in c('Known disease genes','Prognostic genes')){
     if(ref=='Known disease genes'){
@@ -18,7 +20,7 @@ for(fdr_cut in c(0.01,0.05,'none')){
       ref_weight<-Known_disease_genes_weight
     }else if(ref=='Prognostic genes'){
       # Need to run 'Prognostic gene selection(survival_analysis).R' first
-      meta.res<-read.table('survival_analysis_result.txt')
+      meta.res<-read.table(paste0(standard_positive_dir,'survival_analysis_result.txt'))
       Prognostic_genes<-rownames(meta.res)[meta.res$FDR<0.05]
       Prognostic_genes_weight=rep(1,length(Prognostic_genes))
       ref_genes<-Prognostic_genes
@@ -28,17 +30,18 @@ for(fdr_cut in c(0.01,0.05,'none')){
       ref_genes<-Standard_Positive_gene_COVID19
       ref_weight<-Standard_Positive_gene_COVID19_weight
     }
+    names(ref_weight)=ref_genes
     for(sort.meth in c('pvalue')){
-      load(paste0('DE_result_',sort.meth,'_sorted_fdr_',fdr_cut,'_cut.rda'))
+      load(paste0('DE_result_analyzed_with_',analyze_with,'_',sort.meth,'_sorted_fdr_',fdr_cut,'_cut.rda'))
       res_df<-sapply(setdiff(names(result.list),'gene'),FUN=function(x){result.list[[x]][match(result.list[['gene']],rownames(result.list[[x]])),'ranks']})
-      rownames(res_df)=res_list[['gene']]
+      rownames(res_df)=result.list[['gene']]
       res_df%<>%as.data.frame()
       res_df_ks<-res_df[which(rownames(res_df)%in%ref_genes),]
       final_df_ks<-matrix(NA,nrow=ncol(res_df_ks),ncol=1)
       rownames(final_df_ks)=colnames(res_df_ks)
       for(i in 1:ncol(res_df_ks)){
-        meth.comb=colnames(res_df_ks)[i]
-        print(meth.comb)
+        meth=colnames(res_df_ks)[i]
+        print(meth)
         if(!is.null(topn_ks)){
           if(topn_ks>1){
             topn_ks.use=as.numeric(topn_ks)
@@ -47,11 +50,11 @@ for(fdr_cut in c(0.01,0.05,'none')){
             topn_ks.use=round(as.numeric(topn_ks)*nrow(res_df))
             topn_ks.write=paste0('top',as.numeric(topn_ks)*100,'percent')
           }
-          if(sum(!is.na(res_df[,meth.comb]))<topn_ks.use){
-            topn_ks.use=sum(!is.na(res_df[,meth.comb]))
+          if(sum(!is.na(res_df[,meth]))<topn_ks.use){
+            topn_ks.use=sum(!is.na(res_df[,meth]))
           }
           
-          topn_ord_ks<-res_df_ks[,meth.comb]
+          topn_ord_ks<-res_df_ks[,meth]
           
           
           topn_ks_last<-topn_ks.use+(1:(length(topn_ord_ks)-sum(topn_ord_ks<=topn_ks.use, na.rm = T)))*(nrow(res_df)-topn_ks.use)/(length(topn_ord_ks)-sum(topn_ord_ks<=topn_ks.use, na.rm = T))
@@ -78,9 +81,9 @@ for(fdr_cut in c(0.01,0.05,'none')){
           w.x=c(ref_weight.use[ref_genes.use]%>%unname(),rep(mean(ref_weight.use[setdiff(rownames(res_df_ks),ref_genes.use)]),topn_ks_last%>%length()))
           r1<-ks.test.truncated(c(topn_ord_ks_use,topn_ks_last),w.x=w.x,y='punif',min=0,max=nrow(res_df),alternative = 'gr',y.min=0, y.max=nrow(res_df))
         }else{
-          if(sum(is.na(res_df_ks[,meth.comb]))>0){
-            topn_ks.use=sum(!is.na(res_df[,meth.comb]))
-            topn_ord_ks<-res_df_ks[,meth.comb]
+          if(sum(is.na(res_df_ks[,meth]))>0){
+            topn_ks.use=sum(!is.na(res_df[,meth]))
+            topn_ord_ks<-res_df_ks[,meth]
             topn_ks_last<-topn_ks.use+(1:(length(topn_ord_ks)-sum(topn_ord_ks<=topn_ks.use, na.rm = T)))*(nrow(res_df)-topn_ks.use)/(length(topn_ord_ks)-sum(topn_ord_ks<=topn_ks.use, na.rm = T))
             w.x=c(ref_weight[rownames(res_df_ks)][which(topn_ord_ks<=topn_ks.use)]%>%unname(),rep(mean(ref_weight[rownames(res_df_ks)][setdiff(c(1:nrow(res_df_ks)),which(topn_ord_ks<=topn_ks.use))]),topn_ks_last%>%length()))
             topn_ord_ks<-topn_ord_ks[which(topn_ord_ks<=topn_ks.use)]
@@ -88,7 +91,7 @@ for(fdr_cut in c(0.01,0.05,'none')){
           }else{
             #just run full ks test
             w.x=ref_weight[rownames(res_df_ks)]
-            r1<-ks.test.truncated(res_df_ks[,meth.comb],w.x=w.x,y='punif',min=0,max=nrow(res_df),alternative = 'gr',y.min=0, y.max=nrow(res_df))
+            r1<-ks.test.truncated(res_df_ks[,meth],w.x=w.x,y='punif',min=0,max=nrow(res_df),alternative = 'gr',y.min=0, y.max=nrow(res_df))
           }
         }
         final_df_ks[i,1]=r1$p.value

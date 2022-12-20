@@ -220,6 +220,9 @@ meta.res[,c(5+c(1:ncol(P_table)*2))]=logHR_table
 write.table(meta.res,file='survival_analysis_result.txt')
 
 Prognostic_genes<-rownames(meta.res)[meta.res$FDR<0.05]
+Prognostic_genes_weight=rep(1,length(Prognostic_genes))
+
+
 
 do.mapping.survival<-function(eset,fset){
   eset%<>%as.data.frame()

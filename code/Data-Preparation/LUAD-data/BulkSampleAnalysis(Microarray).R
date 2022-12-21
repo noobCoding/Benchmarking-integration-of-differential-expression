@@ -1,3 +1,5 @@
+base_dir='set base directory/'
+setwd(base_dir)
 {
   library(GEOquery)
   library(stringr)

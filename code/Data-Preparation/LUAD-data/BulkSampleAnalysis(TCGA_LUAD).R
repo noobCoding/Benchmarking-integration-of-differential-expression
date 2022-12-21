@@ -1,3 +1,5 @@
+base_dir='set base directory/'
+setwd(base_dir)
 `%ni%`<-Negate(`%in%`)
 data.type='htseq_count'
 mart <- useMart(biomart = "ensembl", dataset = "hsapiens_gene_ensembl"

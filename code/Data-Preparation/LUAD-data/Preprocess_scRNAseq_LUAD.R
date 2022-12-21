@@ -1,3 +1,5 @@
+base_dir='set base directory/'
+setwd(base_dir)
 library(magrittr)
 library(readr)
 library(data.table)
@@ -19,8 +21,8 @@ annot%<>%dplyr::filter(Patient %ni% c('P0031','P0028',"P0009"))
 rownames(count)<-count$Index
 count<-count[,c(which(colnames(count)%in%annot$Index))]
 
-write.table(count, file='count_selected.txt'))
-write.table(annot, file='annot_selected.txt'))
+write.table(count, file='count_selected.txt')
+write.table(annot, file='annot_selected.txt')
 
 Cell.types<-c('Myeloid cells','T/NK cells','Epithelial cells')
 for(ct in Cell.types){

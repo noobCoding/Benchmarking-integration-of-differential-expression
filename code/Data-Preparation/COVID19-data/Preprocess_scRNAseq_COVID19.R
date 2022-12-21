@@ -1,3 +1,5 @@
+base_dir='set base directory/'
+setwd(base_dir)
 {
   library(Seurat)
   library(Matrix)
@@ -5,9 +7,9 @@
   library(magrittr)
   library(stringr)
   library(readr)
-  fts<-read_tsv('/hdd2/SC lung/GSE158055/GSE158055_covid19_features.tsv.gz')
-  annot<-read_csv('/hdd2/SC lung/GSE158055/GSE158055_cell_annotation.csv.gz')
-  mdat<-readxl::read_xlsx('/hdd2/SC lung/GSE158055/GSE158055_sample_metadata.xlsx')
+  fts<-read_tsv(paste0(base_dir,'/GSE158055_covid19_features.tsv.gz'))
+  annot<-read_csv(paste0(base_dir,'/GSE158055_cell_annotation.csv.gz'))
+  mdat<-readxl::read_xlsx(paste0(base_dir,'/GSE158055_sample_metadata.xlsx'))
   # which(is.na(mdat$`# High-throughput sequencing metadata template (version 2.1).`))
   meta.dat<-data.frame(mdat[21:304,2:ncol(mdat)])
   colnames(meta.dat)=mdat[20,2:ncol(mdat)]

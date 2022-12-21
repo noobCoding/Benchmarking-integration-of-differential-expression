@@ -1,4 +1,5 @@
-# setwd('~/')
+base_dir='set base directory/'#DE analyzed result by each DE method are in this directory.
+setwd(base_dir)
 result.list=list()
 geneNames<-c()
 for(i in c("combat+limmatrend.rda", "combat+wilcox.rda", "deseq2_Cov.rda", "deseq2_sep_sep+FEM.rda", "deseq2_sep_sep+REM.rda", "deseq2_sep_sep+wfisher.rda",

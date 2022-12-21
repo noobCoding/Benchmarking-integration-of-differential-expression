@@ -1,5 +1,6 @@
-# data_analyze_with_dir='~/'
-data_analyze_with_dir='/hdd2/SC lung/data_analyze_with/'
+base_dir='set base directory/'#Directory contains DE_result.rda file.
+setwd(base_dir)
+data_analyze_with_dir=base_dir##Can set different directory. Directory contains TCGA/GSE43458/GSE31210 analysis results.
 for(analyze_with in c('none','TCGA','GSE43458',"GSE31210")){
   genes_analyze_with=data_analyze_with=NULL
   if(analyze_with=='TCGA'){

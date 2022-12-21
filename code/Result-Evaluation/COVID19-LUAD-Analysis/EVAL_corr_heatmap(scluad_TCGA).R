@@ -6,6 +6,9 @@ library(gplots)
 library(cluster)
 library(factoextra)
 library(dendextend)
+base_dir='set base directory/'##Directory contains scLUAD&TCGA DE analysis results.
+setwd(base_dir)
+
 methods_to_plot<-c('TCGA_DESeq2','TCGA_edgeR','TCGA_limmavoom','TCGA_limmatrend','Pseudobulk_DESeq2','Pseudobulk_edgeR','Pseudobulk_limmavoom','Pseudobulk_limmatrend','Combat_Wilcox','limma_BEC_Wilcox','MNN_Wilcox','scMerge_Wilcox','Seurat_Wilcox','ZW_BEC_Wilcox','Raw_Wilcox','RISC_Wilcox' , "Scanorama_Wilcox", "scGen_Wilcox", "scVI_Wilcox",'MAST','MAST_Cov','DESeq2','DESeq2_Cov','ZW_DESeq2','ZW_DESeq2_Cov','DESeq2_wFisher','edgeR_DetRate','edgeR_DetRate_Cov','edgeR','edgeR_Cov','ZW_edgeR','ZW_edgeR_Cov','edgeR_wFisher','limmavoom','limmavoom_Cov','limmatrend','limmatrend_Cov','Combat_limmatrend','MNN_limmatrend','scMerge_limmatrend','LogN+limmatrend_wFisher','RISC_limmatrend',"Scanorama_limmatrend", "scGen_limmatrend", "scVI_limmatrend",'DESeq2_FEM','LogN_FEM','DESeq2_REM','LogN_REM','RISC_QP')
 {
   analyze_with='TCGA'
@@ -35,8 +38,8 @@ for(sort.meth in c('pvalue','logFC')){
 }
 
 
-save(for_correlation.list,file='/hdd2/SC lung/run_example/corr_heatmap_sclung_TCGA.RData')
-load('/hdd2/SC lung/run_example/corr_heatmap_sclung_TCGA.RData')
+save(for_correlation.list,file='corr_heatmap_sclung_TCGA.RData')
+load('corr_heatmap_sclung_TCGA.RData')
 
 corr_meth='spearman'
 for(sort.meth in c('logFC','pvalue')){

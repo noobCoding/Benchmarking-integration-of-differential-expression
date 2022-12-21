@@ -3,6 +3,10 @@ library(magrittr)
 library(dplyr)
 library(stringr)
 library(ggplot2)
+base_dir='set base directory/'
+setwd(base_dir)
+analysis_script_dir=base_dir##Can set different directory. Directory contains scripts for real data analysis(visualization, clustering, correlation, gsea, ...).
+source(paste0(analysis_script_dir,'EVAL_Functions for visualization.R'))
 width=25
 height=16
 size_element.text=35

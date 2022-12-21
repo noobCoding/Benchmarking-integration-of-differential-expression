@@ -6,11 +6,15 @@ library(gplots)
 library(cluster)
 library(factoextra)
 library(dendextend)
+base_dir='set base directory/'##Directory contains DE analysis results.
+setwd(base_dir)
+
+# analyzed_data.dir=c('scLUAD_Epithelial','scLUAD_Myeloid','scLUAD_T-NK','COVID-19_Monocyte')
+# select two data for comparison. Run analysis for the first data(scLUAD_Epithelial) and then run same for the second data(COVID-19_Monocyte).
+analyzed_data.dir=base_dir ## 'scLUAD_Epithelial' example folder name. 
+
 methods_to_plot<-c('Pseudobulk_DESeq2','Pseudobulk_edgeR','Pseudobulk_limmavoom','Pseudobulk_limmatrend','Combat_Wilcox','limma_BEC_Wilcox','MNN_Wilcox','scMerge_Wilcox','Seurat_Wilcox','ZW_BEC_Wilcox','Raw_Wilcox','RISC_Wilcox' , "Scanorama_Wilcox", "scGen_Wilcox", "scVI_Wilcox",'MAST','MAST_Cov','DESeq2','DESeq2_Cov','ZW_DESeq2','ZW_DESeq2_Cov','DESeq2_wFisher','edgeR_DetRate','edgeR_DetRate_Cov','edgeR','edgeR_Cov','ZW_edgeR','ZW_edgeR_Cov','edgeR_wFisher','limmavoom','limmavoom_Cov','limmatrend','limmatrend_Cov','Combat_limmatrend','MNN_limmatrend','scMerge_limmatrend','LogN+limmatrend_wFisher','RISC_limmatrend',"Scanorama_limmatrend", "scGen_limmatrend", "scVI_limmatrend",'DESeq2_FEM','LogN_FEM','DESeq2_REM','LogN_REM','RISC_QP')
 {
-  # analyzed_data.dir=c('scLUAD_Epithelial','scLUAD_Myeloid','scLUAD_T-NK','COVID-19_Monocyte')
-  # select two data for comparison. Run analysis for first data and then run same for the second data.
-  analyzed_data.dir='scLUAD_Epithelial' ##example folder name
   analyze_with='none'
   sort.meth='pvalue'
   # fdr_cut=0.05

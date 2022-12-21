@@ -1,6 +1,7 @@
-analysis_script_dir='~/'
-standard_positive_dir='~/'
-standard_positive_dir='/hdd2/SC lung/standard_positive/'
+base_dir='set base directory/'
+setwd(base_dir)
+analysis_script_dir=base_dir##Can set different directory. Directory contains scripts for real data analysis(visualization, clustering, correlation, gsea, ...).
+standard_positive_dir=base_dir##Can set different directory. Directory contains standard positive data for real data analysis(Data for selecting known disease genes, survival analysis results for prognostic genes, GO biological pathway data, wikipathway geneset for gsea, scLUAD standard positive pathways ...).
 source(paste0(analysis_script_dir,'truncated kolmogorov-smirnov.R'))
 library(dplyr)
 library(tidyverse)
@@ -15,7 +16,7 @@ for(fdr_cut in c(0.01,0.05,'none')){
   }
   for(ref in c('Known disease genes','Prognostic genes')){
     if(ref=='Known disease genes'){
-      source(paste0(analysis_script_dir,'/Known disease gene selection.R'))
+      source(paste0(analysis_script_dir,'/EVAL_Known disease gene selection.R'))
       ref_genes<-Known_disease_genes
       ref_weight<-Known_disease_genes_weight
     }else if(ref=='Prognostic genes'){
@@ -26,7 +27,7 @@ for(fdr_cut in c(0.01,0.05,'none')){
       ref_genes<-Prognostic_genes
       ref_weight<-Prognostic_genes_weight
     }else if(ref=='Standard Positive genes(GO:0051607)'){
-      source(paste0(analysis_script_dir,'/Standard positive gene selection(GO:0051607).R'))
+      source(paste0(analysis_script_dir,'/EVAL_Standard positive gene selection(GO:0051607).R'))
       ref_genes<-Standard_Positive_gene_COVID19
       ref_weight<-Standard_Positive_gene_COVID19_weight
     }

@@ -3,6 +3,11 @@ library(dplyr)
 library(magrittr)
 library(readr)
 library(stringr)
+base_dir='set base directory/'##Directory contains scLUAD&TCGA DE analysis results.
+setwd(base_dir)
+analyzed_data.dir=base_dir ##Can set different directory. 'scLUAD_Epithelial' example folder name. We have performed gsea on epithelial cells of LUAD data only.
+standard_positive_dir=base_dir ##Can set different directory. Directory contains standard positive data for real data analysis(Data for selecting known disease genes, survival analysis results for prognostic genes, GO biological pathway data, wikipathway geneset for gsea, scLUAD standard positive pathways ...).
+
 `%ni%`<-Negate(`%in%`)
 normalize_p<-function(x){
   #to avoid -Inf value (log2(pvalue))
@@ -18,8 +23,6 @@ methods_to_plot<-c('TCGA_DESeq2','TCGA_edgeR','TCGA_limmavoom','TCGA_limmatrend'
 
 
 {
-  analyzed_data.dir='scLUAD_Epithelial' ##example folder name. We have performed gsea on epithelial cells of LUAD data only.
-  standard_positive_dir='/hdd2/SC lung/standard_positive/'
   analyze_with='TCGA'
   fdr_cut='none'
   gsea_dat='wikipath'

@@ -20,7 +20,7 @@ for(tumor.type in c('LUAD')){
                            mart = mart)
   mrna_attributes<-mrna_attributes[which(mrna_attributes$gene_biotype=='protein_coding'),]  
   count<-count[which(count$GeneName%in%mrna_attributes$external_gene_name),]
-  c1<-count[which(count$GeneName%ni%names(table(count$GeneName)[table(count$GeneName)==1])),]
+  c1<-count[which(count$GeneName%ni%names(table(count$GeneName)[table(count$GeneName)>=2])),]
   if(any(table(GeneName)>=2)){
     for(g in names(table(count$GeneName))[table(count$GeneName)>1]){
       c2.t<-count%>%dplyr::filter(GeneName==g)

@@ -1,5 +1,3 @@
-base_dir='set base directory/'
-setwd(base_dir)
 `%ni%`<-Negate(`%in%`)
 data.type='htseq_count'
 mart <- useMart(biomart = "ensembl", dataset = "hsapiens_gene_ensembl"
@@ -22,7 +20,7 @@ for(tumor.type in c('LUAD')){
                            mart = mart)
   mrna_attributes<-mrna_attributes[which(mrna_attributes$gene_biotype=='protein_coding'),]  
   count<-count[which(count$GeneName%in%mrna_attributes$external_gene_name),]
-  c1<-count[which(count$GeneName%ni%names(table(count$GeneName)[table(count$GeneName)>=2])),]
+  c1<-count[which(count$GeneName%ni%names(table(count$GeneName)[table(count$GeneName)==1])),]
   if(any(table(GeneName)>=2)){
     for(g in names(table(count$GeneName))[table(count$GeneName)>1]){
       c2.t<-count%>%dplyr::filter(GeneName==g)

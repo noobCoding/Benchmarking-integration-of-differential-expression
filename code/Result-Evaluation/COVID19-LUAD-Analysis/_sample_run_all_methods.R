@@ -103,7 +103,7 @@ do.run<-function(m,former.meth='',P_ref.ind=NULL){
         post.meth=run_limmavoom(processed = processed,cellinfo,cov=str_detect(m,pattern='Cov$'),former.meth = former.meth)
       }
     }else if(m=='QP'){
-      post.meth=run_QP(processed = processed,cellinfo,former.meth = former.meth)
+      post.meth=run_QP(res = res,cellinfo,former.meth = former.meth)
     }else if(m=='REM'){
       post.meth=run_REM(res = res,cellinfo,former.meth = former.meth)
     }else if(m=='FEM'){

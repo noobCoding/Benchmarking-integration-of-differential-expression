@@ -1,11 +1,11 @@
 #RISC output as input processed.
-run_QP<-function(processed,cellinfo,former.meth='risc'){
+run_QP<-function(res,cellinfo,former.meth='risc'){
   library(RISC)
   rownames(cellinfo)=cellinfo$Cell
   cellinfo$Group%<>%factor()
   cellinfo$Batch%<>%factor()
   
-  obj0<-processed
+  obj0<-res
   obj0 = scUMAP(obj0, npc = 3,use = 'PLS')
   obj0 = scCluster(obj0, slot = "cell.umap", k = 3, method = 'louvain')
   

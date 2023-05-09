@@ -1,5 +1,8 @@
 # Benchmarking integration of single-cell differential expression
 -------------------------------------------------------------------------------------------------------------------------
+Nguyen, H.C.T., Baik, B., Yoon, S. et al. Benchmarking integration of single-cell differential expression. Nat Commun 14, 1570 (2023).
+
+DOI: [https://doi.org/10.1038/s41467-023-37126-3](https://doi.org/10.1038/s41467-023-37126-3)
 
 ### General performance of methods
 * This analysis demonstrates the high resolution and efficacy of integrative DE analysis for specific cell type as compared to the analysis of bulk sequencing data. Overall, this project covers over 46 integrative methods for scRNA-seq DE analysis and several different levels of batch effects, thus provides a guideline to integrating DE analysis of scRNA-seq data. 

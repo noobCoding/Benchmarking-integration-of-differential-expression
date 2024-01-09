@@ -6,7 +6,7 @@ pandas==1.4.4
 scanorama==1.7.2
 scanpy==1.9.1
 scgen==2.1.0
-scipy==1.9.1
+scipy==1.10.0
 scvi==0.6.8
 seaborn==0.12.1
 torch==1.12.1
